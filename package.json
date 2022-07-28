@@ -5,7 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon -L index.js"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +16,8 @@
   },
   "engines": {
     "node ": "^16"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }

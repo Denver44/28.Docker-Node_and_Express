@@ -31,3 +31,7 @@ docker exec -it node-express-app bash
 ```
 docker rm node-express-app -f (container will get stop)
 ```
+
+```
+docker run -v %cd%:/app -p 3000:3000 -d --name node-app node-app-image
+```
