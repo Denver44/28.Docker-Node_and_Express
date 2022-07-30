@@ -41,7 +41,7 @@ docker ps -a (started or Stop all container will get listed)
 ### This cmd will give us a intertaice bash for our container
 
 ```
-docker exec -it node-express-app bash
+docker exec -it node-app bash
 ```
 
 ```
@@ -61,4 +61,20 @@ docker run -v %cd%:/app -p 3000:3000 -d --name node-app node-app-image
 
 ```
 docker logs containerID
+```
+
+```
+docker ps -a
+```
+
+### Anonymous volume this hack for node_modules folder
+
+```
+docker run -v %cd%:/app -v /app/node_modules -p 3000:3000 -d --name test node-app
+```
+
+### Docker Read Only Bind Mount
+
+```
+docker run -v %cd%:/app:ro -v /app/node_modules -p 3000:3000 -d --name test node-app
 ```
