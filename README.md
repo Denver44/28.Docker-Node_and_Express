@@ -62,31 +62,10 @@ docker exec -it container-name bash
 docker rm container-name -f
 ```
 
-### To sync you current folder with the docker container use the below commands.
+### To sync you current folder dir with the docker container /app dir use the below commands.
 
 ```
-docker run -v %cd%:/app -p 3000:3000 -d --name node-app node-app-image
-```
-
-### Notes
-
-- %cd% is the path to folder on location
-      - /app is the path to folder on container
-
-```
-docker logs containerID
-```
-
-### Anonymous volume this hack for node_modules folder
-
-```
-docker run -v %cd%:/app -v /app/node_modules -p 3000:3000 -d --name test node-app
-```
-
-### Docker Read Only Bind Mount
-
-```
-docker run -v %cd%:/app:ro -v /app/node_modules -p 3000:3000 -d --name test node-app
+docker run -v %cd%:/app -p 3000:3000 -d --name container-name image-name
 ```
 
 ---
@@ -100,3 +79,11 @@ docker run -v %cd%:/app:ro -v /app/node_modules -p 3000:3000 -d --name test node
 - docker run -p 3000:3000 -d  image-name Here in this command do port forwarding we send the traffic which comes to our machine at port 3000 will be forwarded to container port 3000.
 - Now we are able to talk to our container.
 - number of left to -p is the traffic coming from outside world and the number on right side is the number which our container is expecting.
+
+# Key Takeaways on Sync Source code
+
+- In docker we can sync our source code with the docker work dir.
+- So we don't have to rebuild our image again as we make changes in our code.
+- During build command ve need use -v flag with localPath:ContainerPath
+- Here we have use %cd% which automatically fetch the current local path of pour folder.
+- /app is the path to folder on container from which we have to sync.
