@@ -80,6 +80,12 @@ docker logs containerID / container-name
 docker run -v %cd%:/app -v /app/node_modules -p 3000:3000 -d --name container-name image-name
 ```
 
+### Docker Read Only Bind Mount
+
+```
+docker run -v %cd%:/app:ro -v /app/node_modules -p 3000:3000 -d --name container-name image-name
+```
+
 ---
 
 # Key Takeaways on PORT Forwarding
@@ -108,3 +114,8 @@ docker run -v %cd%:/app -v /app/node_modules -p 3000:3000 -d --name container-na
 - Using another v flag we can mention the anonymous volume.
 - -v /app/node_modules this is little hack to bind the node_modules folder with our container.
 - All the folder will get sync but it will not touch the node_modules folder of container
+
+# Key Takeaways Read Only Bind Mount
+
+- -v %cd%:/app:ro using this command we cannot create file or folder in container from container.
+- This is good for security reasons as we don't want that some one change our source code from our local dir.
