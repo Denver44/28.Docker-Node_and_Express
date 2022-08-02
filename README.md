@@ -1,4 +1,6 @@
-# Docker Commands
+## Docker Commands
+
+---
 
 ### To build an image
 
@@ -24,7 +26,7 @@ docker images ls
 docker image rm image-name
 ```
 
-### To run a container with -d detach mode
+### To run a container with -d detach mode and port forwarding
 
 ```
 docker run -p 3000:3000 -d  image-name
@@ -86,3 +88,15 @@ docker run -v %cd%:/app -v /app/node_modules -p 3000:3000 -d --name test node-ap
 ```
 docker run -v %cd%:/app:ro -v /app/node_modules -p 3000:3000 -d --name test node-app
 ```
+
+---
+
+# Key Takeaways
+
+- By Default Docker container can talk to the outside world.
+- But from the outside world no once can talk with our container that is by default due to security mechanism.
+- Outside world means local machine and internet both.
+
+- docker run -p 3000:3000 -d  image-name Here in this command do port forwarding we send the traffic which comes to our machine at port 3000 will be forwarded to container port 3000.
+- Now we are able to talk to our container.
+- number of left to -p is the traffic coming from outside world and the number on right side is the number which our container is expecting.
