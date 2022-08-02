@@ -1,6 +1,12 @@
 # Docker Commands
 
-### To built an image
+### To build an image
+
+```
+docker build .
+```
+
+### To build an image with a tag name
 
 ```
 docker build -t "image-name" .
@@ -9,26 +15,28 @@ docker build -t "image-name" .
 ### To list all the images
 
 ```
-docker images
+docker images ls
 ```
 
 ### To delete an image
 
 ```
-docker image rm "image-name"
+docker image rm image-name
 ```
 
-### To run a container
+### To run a container with -d detach mode
 
 ```
-docker run -p 3000:3000 -d  node-app-image
+docker run -p 3000:3000 -d  image-name
 ```
 
 ### To run a container with a custom container name
 
 ```
-docker run -p 3000:3000 -d --name node-express-app node-express-app-image
+docker run -p 3000:3000 -d --name container-name  image-name
 ```
+
+### This command will list the running container in our system.
 
 ```
 docker ps
@@ -38,7 +46,7 @@ docker ps
 docker ps -a (started or Stop all container will get listed)
 ```
 
-### This cmd will give us a intertaice bash for our container
+### This cmd will give us a interactive bash for our container
 
 ```
 docker exec -it node-app bash
@@ -56,8 +64,8 @@ docker run -v %cd%:/app -p 3000:3000 -d --name node-app node-app-image
 
 ### Notes
 
-    - %cd% is the path to folder on location
-    - /app is the path to folder on container
+- %cd% is the path to folder on location
+      - /app is the path to folder on container
 
 ```
 docker logs containerID
