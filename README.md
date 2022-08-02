@@ -44,6 +44,24 @@ docker run -p 3000:3000 -d --name container-name  image-name
 docker ps
 ```
 
+### This command will return the list of all Started or Stopped containers
+
+```
+docker ps -a
+```
+
+### This cmd will give us a interactive bash for our container
+
+```
+docker exec -it container-name bash
+```
+
+### To kill a running container
+
+```
+docker rm container-name -f
+```
+
 ---
 
 # Key Takeaways
