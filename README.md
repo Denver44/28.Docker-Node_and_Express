@@ -68,6 +68,18 @@ docker rm container-name -f
 docker run -v %cd%:/app -p 3000:3000 -d --name container-name image-name
 ```
 
+### This command help us to get the logs of the container
+
+```
+docker logs containerID / container-name
+```
+
+### Anonymous volume this hack for node_modules folder
+
+```
+docker run -v %cd%:/app -v /app/node_modules -p 3000:3000 -d --name container-name image-name
+```
+
 ---
 
 # Key Takeaways on PORT Forwarding
@@ -87,3 +99,12 @@ docker run -v %cd%:/app -p 3000:3000 -d --name container-name image-name
 - During build command ve need use -v flag with localPath:ContainerPath
 - Here we have use %cd% which automatically fetch the current local path of pour folder.
 - /app is the path to folder on container from which we have to sync.
+- This -v is bind mount.
+- This will sync all the folder.
+
+# Key Takeaways on anonymous volume
+
+- To prevent the local folder from over riding the /app dir of our container we use anonymous volume.
+- Using another v flag we can mention the anonymous volume.
+- -v /app/node_modules this is little hack to bind the node_modules folder with our container.
+- All the folder will get sync but it will not touch the node_modules folder of container
