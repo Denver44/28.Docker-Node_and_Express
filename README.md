@@ -62,6 +62,12 @@ docker exec -it container-name bash
 docker rm container-name -f
 ```
 
+### To kill a running container and delete the associate volume with it.
+
+```
+docker rm container-name -fv
+```
+
 ### To sync you current folder dir with the docker container /app dir use the below commands.
 
 ```
@@ -98,6 +104,24 @@ docker run -v %cd%:/app:ro -v /app/node_modules --env PORT=4000 -p 3000:4000 -d 
 docker run -v %cd%:/app:ro -v /app/node_modules --env-file ./.env -p 3000:4000 -d --name node-app  node-app-image
 ```
 
+### Docker volumes
+
+```
+docker volume ls
+```
+
+### How to remove docker volumes
+
+```
+docker volume rm volume_id
+```
+
+### How to remove docker unused volumes
+
+```
+docker volume prune
+```
+
 ---
 
 # Key Takeaways on PORT Forwarding
@@ -131,3 +155,11 @@ docker run -v %cd%:/app:ro -v /app/node_modules --env-file ./.env -p 3000:4000 -
 
 - -v %cd%:/app:ro using this command we cannot create file or folder in container from container.
 - This is good for security reasons as we don't want that some one change our source code from our local dir.
+
+# Key Takeaways on Volumes that build during spinning up a container
+
+- The volume which is listed from running the docker volume ls command is the anonymous volume that is created while building up the container.
+- docker run -v %cd%:/app:ro -v /app/node_modules --env-file ./.env -p 3000:4000 -d --name container-name image-name
+- Here the node_modules folder is preserved us for every time by the docker and that's why the volume is created by the docker.
+- We can delete them by running docker volume rm volume_id
+- Another command is docker volume prune this will delete the volume which is not in use.
