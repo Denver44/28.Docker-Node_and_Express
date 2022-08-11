@@ -86,6 +86,18 @@ docker run -v %cd%:/app -v /app/node_modules -p 3000:3000 -d --name container-na
 docker run -v %cd%:/app:ro -v /app/node_modules -p 3000:3000 -d --name container-name image-name
 ```
 
+### How to pass ENV variable at run time
+
+```
+docker run -v %cd%:/app:ro -v /app/node_modules --env PORT=4000 -p 3000:4000 -d --name node-app  node-app-image
+```
+
+### How to pass ENV file at run time
+
+```
+docker run -v %cd%:/app:ro -v /app/node_modules --env-file ./.env -p 3000:4000 -d --name node-app  node-app-image
+```
+
 ---
 
 # Key Takeaways on PORT Forwarding
