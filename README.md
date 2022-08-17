@@ -156,7 +156,7 @@ docker-compose up -d --build
 
 ### How to build a container with docker compose after a change
 
-````
+```
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 ```
 
@@ -212,4 +212,11 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 - Docker compose looks for image project_dir-name-of-services.
 - Docker compose is not smart we need to tell him when we ant to build it again
 - Read documentation for docker compose file.
-````
+- In docker compose file when we use a another image then we can use a image property.
+
+# Key Takeaways on Volumes
+
+- Bind Mount Syncs data with your folder local drive 👉 ./:/app:ro
+- Anonymous volume 👉 /app/node_modules
+- Named Volume is same as Anonymous volume only we gave a name 👉 mongo-db:/data/db
+- We need to declare our named volume in docker-compose file so that another services can also used that volume.
