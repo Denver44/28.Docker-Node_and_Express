@@ -10,7 +10,7 @@ const signUp = async (req, res) => {
       password: hashedPassword,
     });
 
-    // req.session.user = newUser;
+    req.session.user = newUser;
 
     res.status(201).json({
       status: 'success',
@@ -41,7 +41,7 @@ const login = async (req, res) => {
     const isCorrect = await bcrypt.compare(password, user.password);
 
     if (isCorrect) {
-      // req.session.user = user;
+      req.session.user = user;
       res.status(200).json({
         status: 'success',
       });
