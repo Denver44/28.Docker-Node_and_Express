@@ -10,13 +10,12 @@ process.on('uncaughtException', (err) => {
 
 import mongoose from 'mongoose';
 import app from './app.js';
+import MONGO_CONFIG from './config.js';
 
 const { PORT } = process.env;
 
-// const connection_URL = 'mongodb://root:mypassword@172.25.0.2:27017/?authSource=admin';
-
-const connection_URL = process.env.DATABASE_CONNECTION_STRING;
-
+const connection_URL = `mongodb://${MONGO_CONFIG.MONGO_USER}:${MONGO_CONFIG.MONGO_PASSWORD}@${MONGO_CONFIG.MONGO_IP}:${MONGO_CONFIG.MONGO_PORT}/?authSource=admin`;
+console.log(connection_URL);
 mongoose.connect(connection_URL).then((con) => {
   console.log('DB connection successful');
 });
