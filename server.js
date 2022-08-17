@@ -12,7 +12,7 @@ import app from './app.js';
 const { PORT, MONGO_USER, MONGO_PASSWORD, MONGO_IP, MONGO_PORT } = process.env;
 
 const connection_URL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
-
+console.log(connection_URL);
 mongoose.connect(connection_URL).then((con) => {
   console.log('DB connection successful');
 });
