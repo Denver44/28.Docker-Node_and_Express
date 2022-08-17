@@ -160,6 +160,18 @@ docker-compose up -d --build
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 ```
 
+### How to get list of all networks
+
+```
+docker network ls
+```
+
+### How to inspect a network
+
+```
+docker inspect container-name
+```
+
 ---
 
 # Key Takeaways on PORT Forwarding
@@ -220,3 +232,11 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 - Anonymous volume 👉 /app/node_modules
 - Named Volume is same as Anonymous volume only we gave a name 👉 mongo-db:/data/db
 - We need to declare our named volume in docker-compose file so that another services can also used that volume.
+
+# Key Takeaways on Networks
+
+- Bridge and host network comes up with the docker.
+- As there is custom networks so we have DNS.
+- We can talk to other docker container with the help of DNS.
+- If we want that our one container talk to our another container just refer to use service name DNS will resolve it get its IP for us.
+- Only applicable to network we create.
