@@ -122,6 +122,38 @@ docker volume rm volume_id
 docker volume prune
 ```
 
+### How to run docker compose file
+
+```
+docker-compose up
+```
+
+### How to run docker compose file in detach mode
+
+```
+docker-compose up -d
+```
+
+---
+
+### How to down a container with docker compose
+
+```
+docker-compose down
+```
+
+### How to down a container with docker compose with that delete anonymous volume
+
+```
+docker-compose down -v
+```
+
+### How to build a container with docker compose after a change
+
+```
+docker-compose up -d --build
+```
+
 ---
 
 # Key Takeaways on PORT Forwarding
@@ -163,3 +195,14 @@ docker volume prune
 - Here the node_modules folder is preserved us for every time by the docker and that's why the volume is created by the docker.
 - We can delete them by running docker volume rm volume_id
 - Another command is docker volume prune this will delete the volume which is not in use.
+
+# Key Takeaways on Docker Compose
+
+- Docker compose actually helps to run the command.
+- We have to create a file in which each step and configuration is mentioned.
+- Then just run that file.
+- In docker-compose file we have to first mentioned the docker compose version which we are using it.
+- Each container in docker-compose file refer as service.
+- Docker compose looks for image project_dir-name-of-services.
+- Docker compose is not smart we need to tell him when we ant to build it again
+- Read documentation for docker compose file.
