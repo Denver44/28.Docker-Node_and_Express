@@ -3,16 +3,16 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-if (process.env.ENVIRONMENT == 'Development') {
+if (process.env.NODE_ENV == 'Development') {
   console.log('We are in Development Mode');
 }
 
-if (process.env.ENVIRONMENT == 'Production') {
+if (process.env.NODE_ENV == 'Production') {
   console.log('We are in Production Mode');
 }
 
 app.get('*', (req, res) => {
-  res.send('<h1>Docker Compose ✅</h1>');
+  res.send(`<h1>Docker Compose ${process.env.NODE_ENV} </h1>`);
 });
 
 app.listen(PORT, () => {

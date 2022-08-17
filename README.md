@@ -154,6 +154,12 @@ docker-compose down -v
 docker-compose up -d --build
 ```
 
+### How to build a container with docker compose after a change
+
+````
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+```
+
 ---
 
 # Key Takeaways on PORT Forwarding
@@ -206,3 +212,4 @@ docker-compose up -d --build
 - Docker compose looks for image project_dir-name-of-services.
 - Docker compose is not smart we need to tell him when we ant to build it again
 - Read documentation for docker compose file.
+````
