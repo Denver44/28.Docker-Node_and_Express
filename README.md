@@ -172,6 +172,12 @@ docker network ls
 docker inspect container-name
 ```
 
+### How to run a specific service/container without running its dependencies
+
+```
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --no-deps service-name
+```
+
 ---
 
 # Key Takeaways on PORT Forwarding
@@ -240,3 +246,9 @@ docker inspect container-name
 - We can talk to other docker container with the help of DNS.
 - If we want that our one container talk to our another container just refer to use service name DNS will resolve it get its IP for us.
 - Only applicable to network we create.
+
+# Key Takeaways on depends-on property
+
+- depends on actually helps to spin up the mentioned container first.
+- Like we want our mongo container to spin up before the node container so in this case depends on property will help us out.
+-

@@ -1,5 +1,4 @@
 import dotenv from 'dotenv';
-
 dotenv.config();
 
 process.on('uncaughtException', (err) => {
@@ -10,12 +9,10 @@ process.on('uncaughtException', (err) => {
 
 import mongoose from 'mongoose';
 import app from './app.js';
-import MONGO_CONFIG from './config.js';
+const { PORT, MONGO_USER, MONGO_PASSWORD, MONGO_IP, MONGO_PORT } = process.env;
 
-const { PORT } = process.env;
+const connection_URL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
 
-const connection_URL = `mongodb://${MONGO_CONFIG.MONGO_USER}:${MONGO_CONFIG.MONGO_PASSWORD}@${MONGO_CONFIG.MONGO_IP}:${MONGO_CONFIG.MONGO_PORT}/?authSource=admin`;
-console.log(connection_URL);
 mongoose.connect(connection_URL).then((con) => {
   console.log('DB connection successful');
 });
