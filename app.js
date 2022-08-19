@@ -5,6 +5,7 @@ import redis from 'redis';
 import connectRedis from 'connect-redis';
 import postRouter from './routes/postRoutes.js';
 import userRouter from './routes/userRoutes.js';
+import morgan from 'morgan';
 
 const { REDIS_IP, REDIS_PORT, SESSION_SECRET } = process.env;
 
@@ -15,6 +16,10 @@ const redisClient = redis.createClient({
   port: REDIS_PORT,
   host: REDIS_IP,
 });
+
+if (process.env.NODE_ENV === 'Development') {
+  app.use(morgan('dev'));
+}
 
 app.enable('trust proxy');
 app.use(express.json());

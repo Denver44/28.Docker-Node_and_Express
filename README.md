@@ -178,6 +178,18 @@ docker inspect container-name
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --no-deps service-name
 ```
 
+### How to scale a service
+
+```
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d -scale node-app=2
+```
+
+### How to follow logs
+
+```
+docker logs 28docker-node_and_express-node-app-1 -f
+```
+
 ---
 
 # Key Takeaways on PORT Forwarding
@@ -252,3 +264,10 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --no-deps s
 - depends on actually helps to spin up the mentioned container first.
 - Like we want our mongo container to spin up before the node container so in this case depends on property will help us out.
 -
+
+````
+
+```
+
+```
+````
