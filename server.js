@@ -12,10 +12,10 @@ import app from './app.js';
 const { PORT, MONGO_USER, MONGO_PASSWORD, MONGO_IP, MONGO_PORT } = process.env;
 
 const connection_URL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
+
 mongoose.connect(connection_URL).then((con) => {
   console.log('DB connection successful');
 });
-
 const server = app.listen(PORT, () => {
   console.log(
     `${process.env.NODE_ENV} server is started http://localhost:${PORT}`
