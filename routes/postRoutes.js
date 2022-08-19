@@ -7,11 +7,15 @@ import {
   updatePost,
 } from '../controllers/postController.js';
 
-// import protect from '../middleware/authMiddleware';
+import protect from '../MiddleWare/authMiddleware.js';
 
 const router = express.Router();
 
-router.route('/').get(getAllPosts).post(createPost);
-router.route('/:id').get(getOnePost).patch(updatePost).delete(deletePost);
+router.route('/').get(getAllPosts).post(protect, createPost);
+router
+  .route('/:id')
+  .get(protect, getOnePost)
+  .patch(protect, updatePost)
+  .delete(protect, deletePost);
 
 export default router;

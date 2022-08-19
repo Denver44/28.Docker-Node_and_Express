@@ -17,6 +17,7 @@ const redisClient = redis.createClient({
 
 app.use(express.json());
 
+//  Middleware for sessions.
 app.use(
   session({
     store: new RedisStore({ client: redisClient }),
