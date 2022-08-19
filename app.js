@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import session from 'express-session';
 import redis from 'redis';
 import connectRedis from 'connect-redis';
@@ -15,7 +16,9 @@ const redisClient = redis.createClient({
   host: REDIS_IP,
 });
 
+app.enable('trust proxy');
 app.use(express.json());
+app.use(cors());
 
 //  Middleware for sessions.
 app.use(
@@ -33,8 +36,8 @@ app.use(
   })
 );
 
-app.use('/post', postRouter);
-app.use('/user', userRouter);
+app.use('/api/v1/post', postRouter);
+app.use('/api/v1/user', userRouter);
 
 app.get('*', (req, res) => {
   res.send(
