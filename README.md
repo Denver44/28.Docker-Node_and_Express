@@ -1,160 +1,273 @@
-<h1 align="center">
-  <br>
-  <a href="https://natours-website-app.herokuapp.com/"> <img src="https://raw.githubusercontent.com/Denver44/Natours-MERN-App/main/public/img/logo-green.png" alt="Natours" width="200"></a>
-  <br>
-  Natours
-  <br>
-</h1>
+## Docker Commands
 
-<h4 align="center">An awesome tour booking site built on top of <a href="https://nodejs.org/en/" target="_blank">NodeJS</a>.</h4>
+---
 
- <p align="center">
- <a href="#deployed-version">Demo</a> •
-  <a href="#key-features">Key Features</a> •
-  <a href="#demonstration">Demonstration</a> •
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#build-with">Build With</a> •
-  <a href="#installation">Installation</a> • 
-  <a href="#known-bugs">Known Bugs</a> • 
-  <a href="#future-updates">Future Updates</a> • 
-  <a href="#acknowledgement">Acknowledgement</a>
-</p>
+### To build an image
 
-## Deployed Version
-
-Live demo (Feel free to visit) 👉 : https://natours-website-app.herokuapp.com/
-
-Current Frontend build with NextJs demo (Feel free to visit) 👉 : https://natours-next-js.vercel.app/
-
-## Key Features
-
-1. Authentication and Authorization
-   - Login and logout
-2. Tour
-   - Manage booking
-   - check tours map
-   - check user's reviews
-   - check user's rating
-3. User profile
-   - Update username
-   - Update user profile photo
-   - Update email and password
-4. Online Payment
-   - Book tours by paying online through Stripe
-
-## Demonstration
-
-#### Home Page :
-
-![natoursHomePageonline-video-cutt](https://github.com/Denver44/Natours-MERN-App/blob/main/public/video/Natours-All-Tours.gif?raw=true)
-
-#### Tour Details :
-
-![paymentprocess-1-ycnhrceamp4-7fW](https://github.com/Denver44/Natours-MERN-App/blob/main/public/video/Natours-exploring-a-tour.gif?raw=true)
-
-#### Payment Process :
-
-![tourOverviewonline-video-cutterc](https://github.com/Denver44/Natours-MERN-App/blob/main/public/video/Natours-Booking-a-tour.gif?raw=true)
-
-#### Booked Tours :
-
-<img src="https://github.com/Denver44/Natours-MERN-App/blob/main/public/img/screenshots/Natours%20_User-booked-tours.png?raw=true" width="450" height="450" alt="admin_profile" />
-
-#### User Profile :
-
-<img src="https://github.com/Denver44/Natours-MERN-App/blob/main/public/img/screenshots/Natours%20_%20Useraccount.png?raw=true" width="450" height="450" alt="admin_profile" />
-
-#### Admin Profile :
-
-<img src="https://github.com/Denver44/Natours-MERN-App/blob/main/public/img/screenshots/Natours%20_%20Admin-account.png?raw=true" width="450" height="450" alt="admin_profile" />
-
-## How To Use
-
-### Book a tour
-
-- Login to the site
-- Search for tours that you want to book
-- Book a tour
-- Proceed to the payment checkout page
-- Enter the card details (Test Mood):
-  ```
-  - Card No. : 4242 4242 4242 4242
-  - Expiry date: 02 / 22
-  - CVV: 222
-  - Select USA For Country and Enter any address random xyz address
-  ```
-- Finished!
-
-### Manage your booking
-
-- Check the tour you have booked in "Manage Booking" page in your user settings.
-- You'll be automatically redirected to Manage Booking page after you have completed the booking.
-
-### Update your profile
-
-- You can update your own username, profile photo, email and password.
-
-## Build With
-
-- [NodeJS](https://nodejs.org/en/) - JS runtime environment
-- [Express](http://expressjs.com/) - The web framework used
-- [Mongoose](https://mongoosejs.com/) - Object Data Modelling (ODM) library
-- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - Cloud database service
-- [Pug](https://pugjs.org/api/getting-started.html) - High performance template engine
-- [JSON Web Token](https://jwt.io/) - Security token
-- [ParcelJS](https://parceljs.org/) - Blazing fast, zero configuration web application bundler
-- [Stripe](https://stripe.com/) - Online payment API
-- [Postman](https://www.getpostman.com/) - API testing
-- [Mailtrap](https://mailtrap.io/) & [Sendgrid](https://sendgrid.com/) - Email delivery platform
-- [Heroku](https://www.heroku.com/) - Cloud platform
-- [Husky](https://typicode.github.io/husky/#/) - Husky improves commits
-- [Eslint](https://eslint.org/) - Help us to Find and fix problems in your JavaScript
-- [Prettier](https://prettier.io/) - Code formatter
-
-## Installation
-
-You can fork the app or you can git-clone the app into your local machine. Once done that, please install all the
-dependencies by running
-
-```bash
-$ npm i
-set your env variables
-$ npm run watch:js
-$ npm run build:js
-$ npm run start:dev (for development)
-$ npm run start:prod (for production)
-$ npm run debug (for debug)
+```
+docker build .
 ```
 
-## Future Updates
+### To build an image with a tag name
 
-1. Frontend
+```
+docker build -t "image-name" .
+```
 
-   1. Build the frontend in NextJs framework.
-   2. Create whole frontend application in react functional component with typescript only.
-   3. Improve overall UX/UI and make it responsive
-   4. Show the most popular and viewed tour among travellers.
-   5. Allow user to add a review directly at the website after they have taken a tour
+### To list all the images
 
-2. Backend
+```
+docker images ls
+```
 
-   1. confirm user email, login with refresh token, 2FA
-   2. Prevent duplicate bookings after user has booked that exact tour, implement favorite tours
-   3. Try to migrate the backend from javascript to typescript
-   4. Add cloudFront so that we can upload image there.
+### To delete an image
 
-3. Scalable & Deployment
-   1. Create CI/CD pipeline
-   2. Create a Docker Image
-   3. Deploy the backend on vercel.
+```
+docker image rm image-name
+```
 
-- Many More ! There's always room for improvement!
+### To run a container with -d detach mode and port forwarding
 
-## Known Bugs
+```
+docker run -p 3000:3000 -d  image-name
+```
 
-Feel free to email me at denver.io@protonmail.com if you run into any issues or have questions, ideas or concerns.
-Please enjoy and feel free to share your opinion, constructive criticism, or comments about my work. Thank you! 🙂
+### To run a container with a custom container name
 
-## Acknowledgement
+```
+docker run -p 3000:3000 -d --name container-name  image-name
+```
 
-- This project is part of the online course I've taken at Udemy. Thanks to Jonas Schmedtmann for creating this awesome course! Link to the course: [Node.js, Express, MongoDB & More: The Complete Bootcamp 2019](https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/)
+### This command will list the running container in our system.
+
+```
+docker ps
+```
+
+### This command will return the list of all Started or Stopped containers
+
+```
+docker ps -a
+```
+
+### This cmd will give us a interactive bash for our container
+
+```
+docker exec -it container-name bash
+```
+
+### To kill a running container
+
+```
+docker rm container-name -f
+```
+
+### To kill a running container and delete the associate volume with it.
+
+```
+docker rm container-name -fv
+```
+
+### To sync you current folder dir with the docker container /app dir use the below commands.
+
+```
+docker run -v %cd%:/app -p 3000:3000 -d --name container-name image-name
+```
+
+### This command help us to get the logs of the container
+
+```
+docker logs containerID / container-name
+```
+
+### Anonymous volume this hack for node_modules folder
+
+```
+docker run -v %cd%:/app -v /app/node_modules -p 3000:3000 -d --name container-name image-name
+```
+
+### Docker Read Only Bind Mount
+
+```
+docker run -v %cd%:/app:ro -v /app/node_modules -p 3000:3000 -d --name container-name image-name
+```
+
+### How to pass ENV variable at run time
+
+```
+docker run -v %cd%:/app:ro -v /app/node_modules --env PORT=4000 -p 3000:4000 -d --name node-app  node-app-image
+```
+
+### How to pass ENV file at run time
+
+```
+docker run -v %cd%:/app:ro -v /app/node_modules --env-file ./.env -p 3000:4000 -d --name node-app  node-app-image
+```
+
+### Docker volumes
+
+```
+docker volume ls
+```
+
+### How to remove docker volumes
+
+```
+docker volume rm volume_id
+```
+
+### How to remove docker unused volumes
+
+```
+docker volume prune
+```
+
+### How to run docker compose file
+
+```
+docker-compose up
+```
+
+### How to run docker compose file in detach mode
+
+```
+docker-compose up -d
+```
+
+---
+
+### How to down a container with docker compose
+
+```
+docker-compose down
+```
+
+### How to down a container with docker compose with that delete anonymous volume
+
+```
+docker-compose down -v
+```
+
+### How to build a container with docker compose after a change
+
+```
+docker-compose up -d --build
+```
+
+### How to build a container with docker compose after a change
+
+```
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+```
+
+### How to get list of all networks
+
+```
+docker network ls
+```
+
+### How to inspect a network
+
+```
+docker inspect container-name
+```
+
+### How to run a specific service/container without running its dependencies
+
+```
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --no-deps service-name
+```
+
+### How to scale a service
+
+```
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d -scale node-app=2
+```
+
+### How to follow logs
+
+```
+docker logs 28docker-node_and_express-node-app-1 -f
+```
+
+---
+
+# Key Takeaways on PORT Forwarding
+
+- By Default Docker container can talk to the outside world.
+- But from the outside world no once can talk with our container that is by default due to security mechanism.
+- Outside world means local machine and internet both.
+
+- docker run -p 3000:3000 -d  image-name Here in this command do port forwarding we send the traffic which comes to our machine at port 3000 will be forwarded to container port 3000.
+- Now we are able to talk to our container.
+- number of left to -p is the traffic coming from outside world and the number on right side is the number which our container is expecting.
+
+# Key Takeaways on Sync Source code
+
+- In docker we can sync our source code with the docker work dir.
+- So we don't have to rebuild our image again as we make changes in our code.
+- During build command ve need use -v flag with localPath:ContainerPath
+- Here we have use %cd% which automatically fetch the current local path of pour folder.
+- /app is the path to folder on container from which we have to sync.
+- This -v is bind mount.
+- This will sync all the folder.
+
+# Key Takeaways on anonymous volume
+
+- To prevent the local folder from over riding the /app dir of our container we use anonymous volume.
+- Using another v flag we can mention the anonymous volume.
+- -v /app/node_modules this is little hack to bind the node_modules folder with our container.
+- All the folder will get sync but it will not touch the node_modules folder of container
+
+# Key Takeaways Read Only Bind Mount
+
+- -v %cd%:/app:ro using this command we cannot create file or folder in container from container.
+- This is good for security reasons as we don't want that some one change our source code from our local dir.
+
+# Key Takeaways on Volumes that build during spinning up a container
+
+- The volume which is listed from running the docker volume ls command is the anonymous volume that is created while building up the container.
+- docker run -v %cd%:/app:ro -v /app/node_modules --env-file ./.env -p 3000:4000 -d --name container-name image-name
+- Here the node_modules folder is preserved us for every time by the docker and that's why the volume is created by the docker.
+- We can delete them by running docker volume rm volume_id
+- Another command is docker volume prune this will delete the volume which is not in use.
+
+# Key Takeaways on Docker Compose
+
+- Docker compose actually helps to run the command.
+- We have to create a file in which each step and configuration is mentioned.
+- Then just run that file.
+- In docker-compose file we have to first mentioned the docker compose version which we are using it.
+- Each container in docker-compose file refer as service.
+- Docker compose looks for image project_dir-name-of-services.
+- Docker compose is not smart we need to tell him when we ant to build it again
+- Read documentation for docker compose file.
+- In docker compose file when we use a another image then we can use a image property.
+
+# Key Takeaways on Volumes
+
+- Bind Mount Syncs data with your folder local drive 👉 ./:/app:ro
+- Anonymous volume 👉 /app/node_modules
+- Named Volume is same as Anonymous volume only we gave a name 👉 mongo-db:/data/db
+- We need to declare our named volume in docker-compose file so that another services can also used that volume.
+
+# Key Takeaways on Networks
+
+- Bridge and host network comes up with the docker.
+- As there is custom networks so we have DNS.
+- We can talk to other docker container with the help of DNS.
+- If we want that our one container talk to our another container just refer to use service name DNS will resolve it get its IP for us.
+- Only applicable to network we create.
+
+# Key Takeaways on depends-on property
+
+- depends on actually helps to spin up the mentioned container first.
+- Like we want our mongo container to spin up before the node container so in this case depends on property will help us out.
+-
+
+````
+
+```
+
+```
+````
