@@ -11,14 +11,6 @@ services:
     volumes:
       - ./:/app:ro
       - /app/node_modules
-    # environment:
-    #   - MONGO_USER=root
-    #   - MONGO_PASSWORD=mypassword
-    #   - SESSION_SECRET=secret
     env_file:
       - ./.env.local
     command: npm run dev
-
-  # mongo:
-  # ports:
-  # - '27017:27017'
