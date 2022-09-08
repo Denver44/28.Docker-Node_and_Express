@@ -304,3 +304,12 @@ docker logs 28docker-node_and_express-node-app-1 -f
 
 - Build your image locally then push it to docker hub and from their pull to your production server.
 - This is recommended so now your production server only have to handle the user traffic.
+
+## Key Takeaways on rolling update
+
+- Pulling a image and restarting a container i.e is we have to tear down our old containers and start the new container so during this we are going to experience a network outage.
+- Our apps will be down till the new container doesn't get spin up.
+- So to achieve the above challenge i.e we don't face any network outage we need to use Docker Orchestrator.
+- Docker Orchestrator :
+- 1. Swarn (In built in Docker)
+- 2. Kubernetes (Most Popular)
