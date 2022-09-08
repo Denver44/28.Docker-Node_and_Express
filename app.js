@@ -41,13 +41,15 @@ app.use(
   })
 );
 
+app.get('/', (_, res) =>
+  res.send(`<h1>Welcome to Node Docker Tutorial Web App. 💚 </h1>`)
+);
+
 app.use('/api/v1/post', postRouter);
 app.use('/api/v1/user', userRouter);
 
-app.get('*', (req, res) => {
-  res.send(
-    `<h1>Welcome to Node Docker Tutorial Web App. I am built with Node & Express 💚 </h1>`
-  );
+app.get('*', (_, res) => {
+  res.send(`<h1> Sorry 😢 Page Not Found ! 🚀 </h1>`);
 });
 
 export default app;
