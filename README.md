@@ -154,10 +154,20 @@ docker-compose down -v
 docker-compose up -d --build
 ```
 
-### How to build a container with docker compose after a change
+```
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+```
+
+### How to force docker to rebuild a specific service/container without any changes
 
 ```
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --force-recreate service name
+```
+
+### How to force docker to rebuild a specific service/container without any changes and without deps
+
+```
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --force-recreate service name --no-deps
 ```
 
 ### How to get list of all networks
@@ -192,7 +202,14 @@ docker logs 28docker-node_and_express-node-app-1 -f
 
 ---
 
-# Key Takeaways on PORT Forwarding
+## Key Takeaways on PORT Forwarding
+
+<h1 align="center">
+  <div style="display:flex; justify-content: space-between;">  
+   <img src="./docs/images/port-forwarding/image-1.PNG" alt="prod-workflow" width="400">
+   <img src="./docs/images/port-forwarding/image-2.PNG" alt="prod-workflow" width="400">
+  </div>
+</h1>
 
 - By Default Docker container can talk to the outside world.
 - But from the outside world no once can talk with our container that is by default due to security mechanism.
@@ -202,7 +219,7 @@ docker logs 28docker-node_and_express-node-app-1 -f
 - Now we are able to talk to our container.
 - number of left to -p is the traffic coming from outside world and the number on right side is the number which our container is expecting.
 
-# Key Takeaways on Sync Source code
+## Key Takeaways on Sync Source code
 
 - In docker we can sync our source code with the docker work dir.
 - So we don't have to rebuild our image again as we make changes in our code.
@@ -212,19 +229,19 @@ docker logs 28docker-node_and_express-node-app-1 -f
 - This -v is bind mount.
 - This will sync all the folder.
 
-# Key Takeaways on anonymous volume
+## Key Takeaways on anonymous volume
 
 - To prevent the local folder from over riding the /app dir of our container we use anonymous volume.
 - Using another v flag we can mention the anonymous volume.
 - -v /app/node_modules this is little hack to bind the node_modules folder with our container.
 - All the folder will get sync but it will not touch the node_modules folder of container
 
-# Key Takeaways Read Only Bind Mount
+## Key Takeaways Read Only Bind Mount
 
 - -v %cd%:/app:ro using this command we cannot create file or folder in container from container.
 - This is good for security reasons as we don't want that some one change our source code from our local dir.
 
-# Key Takeaways on Volumes that build during spinning up a container
+## Key Takeaways on Volumes that build during spinning up a container
 
 - The volume which is listed from running the docker volume ls command is the anonymous volume that is created while building up the container.
 - docker run -v %cd%:/app:ro -v /app/node_modules --env-file ./.env -p 3000:4000 -d --name container-name image-name
@@ -232,7 +249,7 @@ docker logs 28docker-node_and_express-node-app-1 -f
 - We can delete them by running docker volume rm volume_id
 - Another command is docker volume prune this will delete the volume which is not in use.
 
-# Key Takeaways on Docker Compose
+## Key Takeaways on Docker Compose
 
 - Docker compose actually helps to run the command.
 - We have to create a file in which each step and configuration is mentioned.
@@ -244,14 +261,14 @@ docker logs 28docker-node_and_express-node-app-1 -f
 - Read documentation for docker compose file.
 - In docker compose file when we use a another image then we can use a image property.
 
-# Key Takeaways on Volumes
+## Key Takeaways on Volumes
 
 - Bind Mount Syncs data with your folder local drive 👉 ./:/app:ro
 - Anonymous volume 👉 /app/node_modules
 - Named Volume is same as Anonymous volume only we gave a name 👉 mongo-db:/data/db
 - We need to declare our named volume in docker-compose file so that another services can also used that volume.
 
-# Key Takeaways on Networks
+## Key Takeaways on Networks
 
 - Bridge and host network comes up with the docker.
 - As there is custom networks so we have DNS.
@@ -259,15 +276,31 @@ docker logs 28docker-node_and_express-node-app-1 -f
 - If we want that our one container talk to our another container just refer to use service name DNS will resolve it get its IP for us.
 - Only applicable to network we create.
 
-# Key Takeaways on depends-on property
+## Key Takeaways on depends-on property
 
 - depends on actually helps to spin up the mentioned container first.
 - Like we want our mongo container to spin up before the node container so in this case depends on property will help us out.
--
 
-````
+## Key Takeaways on Development to Production WorkFlow
 
-```
+### Not Recommended !
 
-```
-````
+<h1 align="center">
+  <br>  
+   <img src="./docs/images/workflow/not-recommended.png" alt="dev-to-prod-workflow" width="450">
+  <br>
+</h1>
+
+- Never build your image on production server ever.
+- This is not recommended as building image takes resources it takes CPU cycles and it takes memory.
+
+#### Recommended !
+
+<h1 align="center">
+  <br>  
+   <img src="./docs/images/workflow/recommended.PNG" alt="prod-workflow" width="450">
+  <br>
+</h1>
+
+- Build your image locally then push it to docker hub and from their pull to your production server.
+- This is recommended so now your production server only have to handle the user traffic.
